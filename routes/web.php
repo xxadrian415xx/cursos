@@ -15,8 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('prueba', function() {
+    return "Has accedido correctamente a esta ruta";
+})->middleware(['age','auth:sanctum']);
+
+Route::get('no-autorizado', function(){
+    return "Usted no es mayor de edad";
+
+});
