@@ -63,4 +63,22 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne('App\Models\Profile');
     }
+    //Relacion uno a muchos
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
+    public function videos(){
+        return $this->hasMany('App\Models\Video');
+    }
+    public function comments(){
+        return $this->hasMany('App\Models\Comment');
+    }
+    //Relacion muchos a muchos
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
+    }
+    //Relacion uno a uno Polimorfica
+    public function image(){
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
 }
